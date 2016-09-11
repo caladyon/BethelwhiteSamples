@@ -11,7 +11,7 @@
 <h:body>
 
 	<h:form>
-		<h:dataTable value="#{entityTableOwner.datatable}" var="o"
+		<h:dataTable value="#{entityTableOwner.tabledata}" var="o"
 			styleClass="order-table" headerClass="order-table-header"
 			rowClasses="order-table-odd-row,order-table-even-row">
 
@@ -37,7 +37,7 @@
 
 			<h:column>
 				<f:facet name="header">Action</f:facet>
-				<h:commandLink value="Delete" action="#{order.deleteAction(o)}" />
+				<h:commandLink value="Delete" action="#{entityTableOwner.deleteAction(o)}" />
 			</h:column>
 
 		</h:dataTable>
