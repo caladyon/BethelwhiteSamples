@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+</h:head>
+<h:body>
+	<h1>Fruit Converter with and without wildcard value</h1>
+
+	<h:form>
+		<h:panelGrid columns="3">
+		
+			<h:outputLabel for="fruit0">Without default</h:outputLabel>
+			<h:selectOneMenu id="fruit0" required="true" value="#{choices.fruit0}">
+				<f:selectItems value="#{fruitRepository.all}" />
+				<f:converter converter="#{FruitOnlyConverter}" />
+			</h:selectOneMenu>
+			<h:message for="fruit0" style="color:orange" />
+
+			<h:outputLabel for="fruit1">With default</h:outputLabel>
+			<h:selectOneMenu id="fruit1" required="false" value="#{choices.fruit1}">
+				<f:selectItems value="#{fruitService.allPlusDefault}" />
+				<f:converter converter="#{FruitWithDefaultConverter}" />
+			</h:selectOneMenu>
+			<h:message for="fruit1" style="color:orange" />
+
+		</h:panelGrid>
+		<h:commandButton value="Invia" action="choices" />
+	</h:form>
+</h:body>
+</html>
