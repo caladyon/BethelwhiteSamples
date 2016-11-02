@@ -23,7 +23,8 @@ public class Fruit {
 	private BigDecimal price;
 	
 	/**
-	 * Restituisce la label per i widget di selezione.
+	 * Return the label for the selection menu.
+	 * This way the f:selectItems tag doesn't need itemLabel attributes.
 	 */
 	@Override
 	public String toString() {

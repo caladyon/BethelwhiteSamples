@@ -43,16 +43,25 @@ public class FruitService {
 		return rv;
 	}
 	
+	public Map<String, Fruit> getAllItemsPlusNull() {
+		Map<String, Fruit> rv = new HashMap<>();
+		for (Fruit f : fruitRepository.getAll()) {
+			rv.put(f.getId().toString(), f);
+		}
+		rv.put("", null);
+		return rv;
+	}
+	
+	public List<Fruit> getAll() {
+		return new ArrayList<>(getAllItems().values());
+	}
+
 	public List<Fruit> getAllPlusDefault() {
 		return new ArrayList<>(getAllItemsPlusDefault().values());
 	}
 
-//	public Map<Fruit, String> getAllItems() {
-//		Map<Fruit, String> rv = new HashMap<>();
-//		for (Fruit f : fruitRepository.getAll()) {
-//			rv.put(f, f.getId().toString());
-//		}
-//		return rv;
-//	}
-//
+	public List<Fruit> getAllPlusNull() {
+		return new ArrayList<>(getAllItemsPlusNull().values());
+	}
+
 }

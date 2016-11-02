@@ -7,18 +7,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import javax.annotation.PostConstruct;
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
+import it.caladyon.bethelwhite.fruit_converter.mbean.FruitService;
 import it.caladyon.bethelwhite.fruit_converter.model.Fruit;
-import it.caladyon.bethelwhite.fruit_converter.repository.FruitRepository;
-import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 /**
@@ -27,25 +22,22 @@ import lombok.extern.log4j.Log4j;
  */
 @Log4j
 @FacesConverter("it.caladyon.FruitWithDefaultConverter")
-@ManagedBean(name = "FruitWithDefaultConverter")
-@ApplicationScoped
 public class FruitWithDefaultConverter implements Converter {
 	
-	@ManagedProperty("#{fruitRepository}")
-	@Setter
-	private FruitRepository fruitRepository;
+	private final Map<String, Object> fruits;
 	
-	private Map<String, Object> fruits;
-	
-	@PostConstruct
-	private void doPostConstruct() {
-		List<Fruit> tmp = fruitRepository.getAll();
+	public FruitWithDefaultConverter() {
+		final FacesContext facesContext = FacesContext.getCurrentInstance();
+
+		@SuppressWarnings("deprecation")
+		final FruitService fruitService = (FruitService) facesContext.getApplication()
+				.createValueBinding("#{fruitService}").getValue(facesContext);
+
+		final List<Fruit> tmp = fruitService.getAllPlusNull();
 		fruits = new TreeMap<>();
 		for (Fruit f : tmp) {
 			fruits.put(convertToString(f), f);
 		}
-		Fruit defaultFruit = new Fruit(0L, "Default", null);
-		fruits.put(convertToString(defaultFruit), defaultFruit);
 		log.info(fruits);
 	}
 
@@ -65,8 +57,16 @@ public class FruitWithDefaultConverter implements Converter {
 		return convertToString((Fruit) value);
 	}
 
-	private String convertToString(Fruit f) {
-		return f.getId().toString();
-//		return f.getName();
+	/**
+	 * 
+	 * @param f		May be null.
+	 * @return
+	 */
+	public static String convertToString(Fruit f) {
+		if (f == null) {
+			return "";
+		} else {
+			return f.getId().toString();
+		}
 	}
 }

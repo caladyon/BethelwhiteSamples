@@ -8,11 +8,19 @@
 <h:head>
 </h:head>
 <h:body>
-	<h1>Fruit Converter with and without wildcard value</h1>
+	<h1>Fruit Converter with and without wildcard value - after form</h1>
 
 	<h:panelGrid columns="2">
-		<h:outputText>Without default:</h:outputText><h:outputText>#{choices.fruit0}</h:outputText>
-		<h:outputText>With default:</h:outputText><h:outputText>#{choices.fruit0}</h:outputText>
+	
+		<h:outputText value="Fruits only:"/>
+		<h:outputText value="#{choices.fruit0}"/>
+		
+		<h:outputText value="With placeholder:"/>
+		<h:outputText value="#{choices.fruit1}"/>
+		
+		<h:outputText value="With null:"/>
+		<h:outputText value="#{choices.fruit2}"/>
+		
 	</h:panelGrid>
 </h:body>
 </html>

@@ -21,4 +21,15 @@ public class ChoicesMBean {
 	
 	private Fruit fruit1;
 	
+	private Fruit fruit2;
+
+	public String convertToString(Fruit f) {
+		String rv;
+		if (f == null) {
+			rv = "-- null item --";
+		} else {
+			rv = f.getName();
+		}
+		return rv;
+	}
 }

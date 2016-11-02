@@ -13,19 +13,29 @@
 	<h:form>
 		<h:panelGrid columns="3">
 		
-			<h:outputLabel for="fruit0">Without default</h:outputLabel>
+			<h:outputLabel for="fruit0">Fruits only</h:outputLabel>
 			<h:selectOneMenu id="fruit0" required="true" value="#{choices.fruit0}">
 				<f:selectItems value="#{fruitRepository.all}" />
-				<f:converter converter="#{FruitOnlyConverter}" />
+				<f:converter converterId="it.caladyon.FruitOnlyConverter" />
 			</h:selectOneMenu>
 			<h:message for="fruit0" style="color:orange" />
 
-			<h:outputLabel for="fruit1">With default</h:outputLabel>
+			<h:outputLabel for="fruit1">With placeholder</h:outputLabel>
 			<h:selectOneMenu id="fruit1" required="false" value="#{choices.fruit1}">
 				<f:selectItems value="#{fruitService.allPlusDefault}" />
-				<f:converter converter="#{FruitWithDefaultConverter}" />
+				<f:converter converterId="it.caladyon.FruitOnlyConverter" />
 			</h:selectOneMenu>
 			<h:message for="fruit1" style="color:orange" />
+
+			<h:outputLabel for="fruit2">With null</h:outputLabel>
+			<h:selectOneMenu id="fruit2" required="false" value="#{choices.fruit2}">
+				<f:selectItems value="#{fruitService.allPlusNull}" 
+						var="fruit" 
+						itemLabel="#{choices.convertToString(fruit)}"
+						itemValue="#{fruit}"/>
+				<f:converter converterId="it.caladyon.FruitWithDefaultConverter" />
+			</h:selectOneMenu>
+			<h:message for="fruit2" style="color:orange" />
 
 		</h:panelGrid>
 		<h:commandButton value="Invia" action="choices" />
