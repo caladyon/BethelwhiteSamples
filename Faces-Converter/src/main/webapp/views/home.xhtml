@@ -19,15 +19,31 @@
 				<f:converter converterId="it.caladyon.FruitOnlyConverter" />
 			</h:selectOneMenu>
 			<h:message for="fruit0" style="color:orange" />
+			
+			<h:outputLabel for="fruit3">With no-selection option</h:outputLabel>
+			<h:selectOneMenu id="fruit3" required="false" value="#{choices.fruit3}" >
+				<f:selectItem itemLabel="--- NSO ---" noSelectionOption="true"/>
+				<f:selectItems value="#{fruitRepository.all}" />
+				<f:converter converterId="it.caladyon.FruitOnlyConverter" />
+			</h:selectOneMenu>
+			<h:message for="fruit3" style="color:orange" />
 
-			<h:outputLabel for="fruit1">With placeholder</h:outputLabel>
+			<h:outputLabel for="fruit4">With null-valued selectItem</h:outputLabel>
+			<h:selectOneMenu id="fruit4" required="false" value="#{choices.fruit4}">
+				<f:selectItem itemLabel="--- null value ---" itemValue="#{null}"/>
+				<f:selectItems value="#{fruitRepository.all}" />
+				<f:converter converterId="it.caladyon.FruitOnlyConverter" />
+			</h:selectOneMenu>
+			<h:message for="fruit4" style="color:orange" />
+			
+			<h:outputLabel for="fruit1">With placeholder fruit</h:outputLabel>
 			<h:selectOneMenu id="fruit1" required="false" value="#{choices.fruit1}">
 				<f:selectItems value="#{fruitService.allPlusDefault}" />
 				<f:converter converterId="it.caladyon.FruitOnlyConverter" />
 			</h:selectOneMenu>
 			<h:message for="fruit1" style="color:orange" />
 
-			<h:outputLabel for="fruit2">With null</h:outputLabel>
+			<h:outputLabel for="fruit2">With null fruit</h:outputLabel>
 			<h:selectOneMenu id="fruit2" required="false" value="#{choices.fruit2}">
 				<f:selectItems value="#{fruitService.allPlusNull}" 
 						var="fruit" 
@@ -38,7 +54,7 @@
 			<h:message for="fruit2" style="color:orange" />
 
 		</h:panelGrid>
-		<h:commandButton value="Invia" action="choices" />
+		<h:commandButton value="Submit" action="choices" />
 	</h:form>
 </h:body>
 </html>

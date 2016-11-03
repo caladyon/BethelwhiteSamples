@@ -22,7 +22,16 @@ public class ChoicesMBean {
 	private Fruit fruit1;
 	
 	private Fruit fruit2;
+	
+	private Fruit fruit3;
+	
+	private Fruit fruit4;
 
+	/**
+	 * Used by <code>fruit2</code> in <code>home.xhtml</code>.
+	 * @param f
+	 * @return		The itemLabel for f.
+	 */
 	public String convertToString(Fruit f) {
 		String rv;
 		if (f == null) {
