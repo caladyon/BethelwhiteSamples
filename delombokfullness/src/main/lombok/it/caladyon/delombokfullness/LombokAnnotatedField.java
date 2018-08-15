@@ -3,7 +3,8 @@
  */
 package it.caladyon.delombokfullness;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Class with one integer field, and <code>@Data</code> annotation.
@@ -11,13 +12,15 @@ import lombok.Data;
  * @author luciano.boschi
  *
  */
-@Data
-public class LombokAnnotatedClass {
+public class LombokAnnotatedField {
 
     /**
      * A simple integer field.
-     * @return The value set by the constructor.
+     * @param value The new value.
+     * @return The stored value.
      */
-    private final int value;
+    @Getter
+    @Setter
+    private int value;
 
 }
