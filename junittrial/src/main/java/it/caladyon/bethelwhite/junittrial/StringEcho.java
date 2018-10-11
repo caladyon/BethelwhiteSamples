@@ -4,13 +4,12 @@
 package it.caladyon.bethelwhite.junittrial;
 
 /**
- * @author luciano.boschi
+ * @author Caladyon Eryn
  *
  */
 public class StringEcho {
 
-    public String echo(String string)
-    {
-	return string;
+    public String echo(String string) {
+        return string;
     }
 }

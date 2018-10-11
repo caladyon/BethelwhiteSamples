@@ -10,8 +10,8 @@
     
     <developers>
         <developer>
-            <name>Luciano Boschi</name>
-            <email>luciano.boschi@staff.aruba.it</email>
+            <name>Caladyon Eryn</name>
+            <email>caladyon@gmail.com</email>
             <url>https://bethelwhite.wordpress.com/</url>
         </developer>
     </developers>
@@ -62,7 +62,6 @@
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
                             <properties>
-                                <!-- <includeTags></includeTags> -->
                                 <excludeTags>WrongTest</excludeTags>
                             </properties>
                         </configuration>
