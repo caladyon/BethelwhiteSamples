@@ -6,7 +6,7 @@ package it.caladyon.delombokfullness;
 /**
  * Class with one integer field, and boilerplate methods.
  * 
- * @author luciano.boschi
+ * @author Caladyon Eryn
  *
  */
 public class VanillaClass {

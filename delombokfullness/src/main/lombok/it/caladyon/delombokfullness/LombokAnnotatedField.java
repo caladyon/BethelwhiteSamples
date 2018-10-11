@@ -9,7 +9,7 @@ import lombok.Setter;
 /**
  * Class with one integer field, and <code>@Data</code> annotation.
  * 
- * @author luciano.boschi
+ * @author Caladyon Eryn
  *
  */
 public class LombokAnnotatedField {

@@ -8,7 +8,7 @@ import lombok.Data;
 /**
  * Class with one integer field, and <code>@Data</code> annotation.
  * 
- * @author luciano.boschi
+ * @author Caladyon Eryn
  *
  */
 @Data
