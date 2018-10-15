@@ -41,14 +41,6 @@
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
-                <dependencies>
-                    <dependency>
-                        <!-- da mantenere per ora: https://issues.apache.org/jira/browse/SUREFIRE-1577 -->
-                        <groupId>org.junit.platform</groupId>
-                        <artifactId>junit-platform-surefire-provider</artifactId>
-                        <version>${junit.platform.version}</version>
-                    </dependency>
-                </dependencies>
             </plugin>
         </plugins>
     </build>
@@ -62,7 +54,7 @@
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
                             <properties>
-                                <excludeTags>WrongTest</excludeTags>
+                                <excludedGroups>WrongTest</excludedGroups>
                             </properties>
                         </configuration>
                     </plugin>
@@ -77,7 +69,7 @@
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
                             <properties>
-                                <includeTags>OtherTest</includeTags>
+                                <groups>OtherTest</groups>
                             </properties>
                         </configuration>
                     </plugin>
@@ -92,8 +84,8 @@
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
                             <properties>
-                                <includeTags>OtherTest</includeTags>
-                                <excludeTags>WrongTest</excludeTags>
+                                <groups>OtherTest</groups>
+                                <excludedGroups>WrongTest</excludedGroups>
                             </properties>
                         </configuration>
                     </plugin>
@@ -108,8 +100,8 @@
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
                             <properties>
-                                <excludeTags>WrongTest</excludeTags>
-                                <includeTags>OtherTest</includeTags>
+                                <excludedGroups>WrongTest</excludedGroups>
+                                <groups>OtherTest</groups>
                             </properties>
                         </configuration>
                     </plugin>
